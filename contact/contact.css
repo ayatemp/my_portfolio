@@ -1,0 +1,165 @@
+/* Root Colors */
+:root {
+    --primary-color: green;
+    --text-color: #333;
+    --bg-color: #f0f0f0;
+    --white: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --hover-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Social Icons */
+/* Social Links Styling */
+/* .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links img {
+    width: 40px; 
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.social-links img:hover {
+    transform: scale(1.2);
+} */
+
+.social-icons img {
+    width: 20px; 
+    height: 20px;
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+.social-links img {
+    width: 100%; /* 親の幅に合わせてアイコンを調整 */
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.social-links a {
+    display: flex; /* 各リンクをフレックスアイテムに */
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 120px; /* 固定幅で各アイコンのボックスサイズを設定 */
+    max-width: 120px;
+    max-height: 120px;
+}
+
+.social-links img:hover {
+    transform: scale(1.2);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding-top: 50px; /* メールアドレスとの間に余白を追加 */
+}
+
+/* Header Styling */
+header {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+nav a {
+    margin: 0 15px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+/* Contact Section Styling */
+.contact-section {
+    padding: 50px 20px;
+    text-align: center;
+    color: var(--text-color); 
+}
+
+.contact-section h2 {
+    font-size: 3.5em;
+    margin: 0;
+    color: var(--text-color); 
+}
+
+.contact-section p {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: var(--text-color); 
+}
+
+.description {
+    margin-bottom: 30px;
+    font-size: 1em;
+}
+
+/* Email Box Styling */
+.email-box {
+    background-color: var(--bg-color); 
+    border-radius: 50px;
+    padding: 15px 100px;
+    box-shadow: 0 4px 8px var(--shadow-color); 
+}
+
+.email-box a {
+    color: var(--primary-color); /* メールアドレスの緑色 */
+    font-size: 3em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.email-box a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--white);
+    padding: 10px 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: #666;
+    font-size: 0.9em;
+    width: 100%;
+    margin-top: auto;
+}

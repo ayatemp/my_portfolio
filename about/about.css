@@ -1,0 +1,218 @@
+/* Root Colors */
+:root {
+    --primary-color: green;
+    --text-color: #333;
+    --bg-color: #f0f0f0;
+    --white: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --hover-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Social Icons */
+.social-icons img {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* Header Styling */
+header {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+nav a {
+    margin: 0 15px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+
+/* About Section Styling */
+#about {
+    padding: 50px;
+    background-color: var(--white);
+}
+
+/* .about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+} */
+
+.about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 50% 50%; /* 各列を均等に分割 */
+    align-items: center;
+    gap: 100px; /* 画像と経歴の間に余白を設定 */
+    padding: 0 20px;
+}
+
+.profile-pic {
+    width: 100%; /* 幅をグリッド列にフィットさせる */
+    max-width: none; /* 幅制限を解除 */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 縦方向の中央揃え */
+    text-align: left;
+    margin-top: -200px;
+    
+}
+
+#about h1 {
+    font-size: 7rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.about-content h2 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.about-content ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+/* Skills Section Styling */
+#skills {
+    padding: 50px 100px;
+    background-color: var(--white);
+}
+
+#skills h1 {
+    font-size: 7rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.skills-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.skill {
+    background-color: var(--white);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px var(--hover-shadow);
+}
+
+
+.skill h2 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+/* Hobbys Section Styling */
+#hobbys {
+    padding: 50px 100px;
+    background-color: var(--white);
+}
+
+#hobbys h1 {
+    font-size: 7rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hobbys-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.hobby-image {
+    width: 250px;
+    height: 250px;
+    margin: 0;
+    padding: 0;
+    border: none; 
+    box-shadow: none;
+    transition: none; 
+    pointer-events: none;
+    filter: grayscale(100%) brightness(0); 
+    margin-bottom: 200px;
+}
+
+.hobby-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px var(--hover-shadow);
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--white);
+    padding: 10px 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: #666;
+    font-size: 0.9em;
+    width: 100%;
+    margin-top: auto;
+}
+

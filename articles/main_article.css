@@ -1,0 +1,225 @@
+/* Root Colors */
+:root {
+    --primary-color: green;
+    --text-color: #333;
+    --bg-color: #f0f0f0;
+    --white: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --hover-shadow: rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* bodyとhtmlに高さを指定 */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Social Icons */
+.social-icons img {
+    width: 20px;
+    height: 20px; /* アイコンのサイズ指定 */
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* Header Styling */
+header {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+nav a {
+    margin: 0 15px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+/* Main Content */
+.artifact-container {
+    padding: 0 50px;
+
+    flex: 1;
+    display: block;
+}
+
+/* .artifact-container h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+} */
+
+.artifact-container h1 {
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #006600, #00cc00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Filter Buttons
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    background-color: var(--white);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+} */
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #ffffff;
+    color: var(--primary-color);
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: linear-gradient(135deg, #00cc00, #006600);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.filter-btn:hover {
+    background-color: var(--bg-color);
+}
+
+/* Artifacts Grid */
+.artifacts-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.artifact-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    display: block;
+}
+
+.artifact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px var(--hover-shadow);
+}
+
+.artifact-card-content {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.artifact-card-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--white);
+}
+
+.artifact-card-overlay h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.artifact-card-overlay p {
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+/* タイトルフェードイン＆スライドアップ */
+.artifact-title.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.artifact-title.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+}
+/* アクティブボタンのスタイル */
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* フッターのスタイルを追加 */
+footer {
+    background-color: var(--white);
+    padding: 10px 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: #666;
+    font-size: 0.9em;
+    width: 100%;
+    margin-top: auto;
+}
