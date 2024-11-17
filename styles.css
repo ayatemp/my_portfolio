@@ -325,36 +325,21 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-    .main-content {
-        flex-direction: column;
+/* スマホ用のレスポンシブデザイン */
+@media (max-width: 768px) {
+    .section.applications {
+        height: 200px; /* 必要に応じて高さを調整 */
     }
 
-    .left-column, .right-column,
-    .right-left-column, .right-right-column {
+    .section.applications video {
         width: 100%;
-    }
-
-    .right-bottom {
-        flex-direction: column;
-    }
-
-    .image-section {
-        height: 20vh;
+        height: 100%;
+        object-fit: cover; /* 枠いっぱいに動画を収める */
+        display: block;
     }
 
     .section-title {
-        font-size: 36px; /* レスポンシブデザインで少し小さくする */
-    }
-}
-
-@media (max-height: 800px) {
-    .section-title {
-        font-size: 28px;
-        padding: 15px;
-    }
-
-    .image-section {
-        height: 20vh;
+        font-size: 24px; /* タイトルのフォントサイズを調整 */
+        padding: 10px;
     }
 }
