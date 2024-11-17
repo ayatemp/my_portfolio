@@ -1,0 +1,360 @@
+:root {
+    --primary-color: green;
+    --text-color: #333;
+    --bg-color: #f0f0f0;
+    --white: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --hover-shadow: rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Header Styling */
+header {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0;
+    width: 100%;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover, nav a:focus {
+    color: var(--primary-color);
+}
+
+.social-icons img {
+    width: 20px;
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* Main Content Styling */
+.main-content {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    width: 100%;
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%; 
+}
+
+/* Common section styles */
+.section {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    border: none;
+    text-decoration: none;
+
+    background-size: 70% auto; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    
+}
+
+.section:hover, .section:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px var(--hover-shadow);
+}
+
+
+
+/* Section titles */
+.section-title {
+    font-size: 36px; /* 2倍のサイズに増加 */
+    font-weight: bold;
+    color: #333;
+    padding: 20px;
+    margin: 0;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.3s, color 0.3s;
+
+    background-color: transparent;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.section:hover .section-title {
+    transform: translateY(-5px);
+    color: var(--text-color);
+}
+
+.section.artifact,
+.section.tech-articles,
+.section.about {
+  background-color: rgba(230, 230, 230); /* 70%の不透明度の暗い灰色 */
+  background-blend-mode: normal;
+}
+
+.section.tech-articles {
+    background-size: 60% auto; /* 背景画像のサイズを調整 */
+    background-position: center 70px; /* 画像を中央揃え */
+    background-repeat: no-repeat; /* 繰り返しを無効化 */
+    height: 300px; /* 高さを300pxに設定（例） */
+}
+
+.section.research {
+    background-size: 60% auto; /* 背景画像のサイズを調整 */
+    background-position: center 70px; /* 画像を中央揃え */
+    background-repeat: no-repeat; /* 繰り返しを無効化 */
+    height: 300px; /* 高さを300pxに設定（例） */
+}
+
+.section.applications {
+    background-size: 80% auto; /* 背景画像のサイズを調整 */
+    background-position: center 70px; /* 画像を中央揃え */
+    background-repeat: no-repeat; /* 繰り返しを無効化 */
+    height: 300px; /* 高さを300pxに設定（例） */
+}
+
+/* Left column sections */
+.artifact, .tech-articles, .research, .applications, .about, .contact {
+    flex: 1;
+}
+
+/* Image section */
+.image-section {
+    flex: 0 0 auto;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    box-shadow: none;
+}
+
+.image-section img {
+    max-width: 200%;
+    max-height: 200%;
+    object-fit: contain;
+}
+
+.image-section:hover, .image-section:focus {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Right column layout */
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.right-top {
+    flex: 1;
+}
+
+.right-bottom {
+    display: flex;
+    gap: 20px;
+    flex: 2;
+}
+
+/* .right-left-column{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.right-right-column {
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    gap: 20px;
+    width: 100%;
+} */
+.right-left-column,
+.right-right-column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Research and Applications sections */
+.research, .applications, .hobby {
+    background-color: rgba(60, 60, 60, 0.9); /* 濃いグレーに設定 */
+}
+.research .section-title,
+.applications .section-title,
+.hobby .section-title {
+    color: #ffffff; /* 白色に設定 */
+}
+.right-left-column {
+    flex: 1;
+}
+
+.research, .applications {
+    flex: 2;
+}
+
+.hobby {
+    flex: 1;
+}
+
+/* About and Contact sections */
+.about, .contact {
+    background-color: var(--white);
+}
+
+/* .about {
+    background: none;
+    overflow: hidden;
+    flex-grow: 8;
+    min-height: 0;
+} */
+.about {
+    width: 100%; /* 必要に応じて変更 */
+    max-width: 400px; /* 必要に応じて固定サイズを設定 */
+    aspect-ratio: 1 / 1; /* 枠の縦横比を1:1に固定する例 */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    flex-grow: 8;
+    min-height: 0;
+}
+
+.about img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 枠いっぱいに収め、縦横比を維持 */
+    display: block;
+    border-radius: 8px;
+}
+
+.image-title {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 10px;
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: bold;
+    border-radius: 4px;
+    z-index: 1; /* 画像の上に表示されるように設定 */
+}
+
+
+
+.contact {
+    flex-grow: 2;
+    min-height: 0;
+    background-color: rgba(230, 230, 230, 0.7)
+}
+
+
+
+/* Footer Styling */
+footer {
+    background-color: var(--white);
+    padding: 10px 0;
+    border-top: 1px solid var(--border-color);
+    width: 100%;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .left-column, .right-column,
+    .right-left-column, .right-right-column {
+        width: 100%;
+    }
+
+    .right-bottom {
+        flex-direction: column;
+    }
+
+    .image-section {
+        height: 20vh;
+    }
+
+    .section-title {
+        font-size: 36px; /* レスポンシブデザインで少し小さくする */
+    }
+}
+
+@media (max-height: 800px) {
+    .section-title {
+        font-size: 28px;
+        padding: 15px;
+    }
+
+    .image-section {
+        height: 20vh;
+    }
+}
