@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "home": "Home",
+    "research": "Research",
+    "articles": "Articles",
+    "projects": "Projects",
+    "available": "Available for work"
+  },
+  "home": {
+    "hero_tagline": "ML Engineer & Researcher",
+    "hero_h1_line1": "Research",
+    "hero_h1_line2": "meets",
+    "hero_h1_line3": "engineering.",
+    "hero_description": "ML Engineer running the boundary between research and PoC — from HCI & human augmentation to Active Learning & LLMs.",
+    "cta_research": "Research",
+    "cta_projects": "Projects",
+    "profile_role": "ML Engineer & Researcher",
+    "profile_areas": "HCI / Human Augmentation / Active Learning / LLM",
+    "stats_papers": "Papers",
+    "stats_industry": "Industry",
+    "stats_award": "Award",
+    "section_academic": "Academic Work",
+    "section_masters": "Masters Research",
+    "full_details": "Full details →",
+    "section_writing": "Latest Writing",
+    "section_articles": "Technical Articles",
+    "all_articles": "All articles →",
+    "section_work": "Selected Work",
+    "section_projects": "Projects",
+    "all_projects": "All projects →",
+    "footer_built": "© 2026 — Built with Next.js",
+    "scroll": "Scroll"
+  },
+  "research": {
+    "eyebrow": "Academic Work",
+    "title": "Masters Research",
+    "description": "Aoyama Gakuin University Graduate School, Intelligent Information Course / Real-World Communication Lab. Research spanning HCI, human augmentation, machine learning, and LLM applications.",
+    "education_label": "Education",
+    "publications_label": "Publications & Research",
+    "experience_label": "Industry Experience"
+  },
+  "articles": {
+    "eyebrow": "Writing",
+    "title": "Technical Articles",
+    "description": "Sharing insights on Active Learning, image recognition, and MLOps.",
+    "empty": "No articles yet.",
+    "back": "← All articles",
+    "back_full": "← Back to all articles",
+    "published": "Published"
+  },
+  "projects": {
+    "eyebrow": "Selected Work",
+    "title": "Projects",
+    "description": "Contract PoC, personal projects, and research implementations.",
+    "empty": "No projects yet.",
+    "back": "← All projects",
+    "back_full": "← Back to projects"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "home": "Home",
+    "research": "Research",
+    "articles": "Articles",
+    "projects": "Projects",
+    "available": "採用検討中"
+  },
+  "home": {
+    "hero_tagline": "ML Engineer & Researcher",
+    "hero_h1_line1": "Research",
+    "hero_h1_line2": "meets",
+    "hero_h1_line3": "engineering.",
+    "hero_description": "HCI・人間拡張からActive Learning・LLMまで、研究とPoCの境界を走るMLエンジニア。",
+    "cta_research": "Research",
+    "cta_projects": "Projects",
+    "profile_role": "ML Engineer & Researcher",
+    "profile_areas": "HCI / 人間拡張 / Active Learning / LLM",
+    "stats_papers": "Papers",
+    "stats_industry": "Industry",
+    "stats_award": "Award",
+    "section_academic": "Academic Work",
+    "section_masters": "Masters Research",
+    "full_details": "Full details →",
+    "section_writing": "Latest Writing",
+    "section_articles": "Technical Articles",
+    "all_articles": "All articles →",
+    "section_work": "Selected Work",
+    "section_projects": "Projects",
+    "all_projects": "All projects →",
+    "footer_built": "© 2026 — Built with Next.js",
+    "scroll": "Scroll"
+  },
+  "research": {
+    "eyebrow": "Academic Work",
+    "title": "Masters Research",
+    "description": "青山学院大学大学院 理工学研究科 知能情報コース / 実世界通信研究室。HCI・人間拡張技術の研究から、機械学習・LLMの応用研究まで幅広く取り組んでいます。",
+    "education_label": "Education",
+    "publications_label": "Publications & Research",
+    "experience_label": "Industry Experience"
+  },
+  "articles": {
+    "eyebrow": "Writing",
+    "title": "Technical Articles",
+    "description": "Active Learning、画像認識、MLOpsに関する知見を発信しています。",
+    "empty": "記事がまだありません。",
+    "back": "← All articles",
+    "back_full": "← Back to all articles",
+    "published": "Published"
+  },
+  "projects": {
+    "eyebrow": "Selected Work",
+    "title": "Projects",
+    "description": "受託POC・個人開発・研究実装のプロジェクトをまとめています。カードにカーソルを合わせてみてください。",
+    "empty": "プロジェクトがまだありません。",
+    "back": "← All projects",
+    "back_full": "← Back to projects"
+  }
+}
