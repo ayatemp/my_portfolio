@@ -11,3 +11,7 @@ const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
 export async function getDictionary(locale: Locale): Promise<Dictionary> {
   return dictionaries[locale]?.() ?? dictionaries.ja();
 }
+
+export function normalizeLocale(locale: string): Locale {
+  return locale === "en" ? "en" : "ja";
+}

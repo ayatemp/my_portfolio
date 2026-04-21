@@ -1,15 +1,16 @@
 import Link from "next/link";
 import { getArticles } from "@/lib/articles";
 import type { Metadata } from "next";
-import { getDictionary, type Locale } from "@/lib/getDictionary";
+import { getDictionary, normalizeLocale } from "@/lib/getDictionary";
 import { lp } from "@/lib/localePath";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale: localeParam } = await params;
+  const locale = normalizeLocale(localeParam);
   const dict = await getDictionary(locale);
   return {
     title: dict.articles.title,
@@ -20,9 +21,10 @@ export async function generateMetadata({
 export default async function ArticlesPage({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const { locale: localeParam } = await params;
+  const locale = normalizeLocale(localeParam);
   const dict = await getDictionary(locale);
   const t = dict.articles;
   const articles = await getArticles();

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "@/app/globals.css";
 import Navigation from "@/components/Navigation";
-import { getDictionary, type Locale } from "@/lib/getDictionary";
+import { getDictionary, normalizeLocale } from "@/lib/getDictionary";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -15,9 +15,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale: localeParam } = await params;
+  const locale = normalizeLocale(localeParam);
   const isJa = locale === "ja";
   return {
     title: {
@@ -39,9 +40,10 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const { locale: localeParam } = await params;
+  const locale = normalizeLocale(localeParam);
   const dict = await getDictionary(locale);
 
   return (

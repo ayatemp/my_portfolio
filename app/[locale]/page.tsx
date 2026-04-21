@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getArticles } from "@/lib/articles";
 import { getProjects } from "@/lib/projects";
 import { ProfilePhoto } from "@/components/ProfilePhoto";
-import { getDictionary, type Locale } from "@/lib/getDictionary";
+import { getDictionary, normalizeLocale } from "@/lib/getDictionary";
 import { lp } from "@/lib/localePath";
 
 const skills = [
@@ -40,9 +40,10 @@ const researchPapers = [
 export default async function HomePage({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const { locale: localeParam } = await params;
+  const locale = normalizeLocale(localeParam);
   const dict = await getDictionary(locale);
   const t = dict.home;
 

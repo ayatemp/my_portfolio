@@ -7,7 +7,7 @@ import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import type { Metadata } from "next";
-import { getDictionary, type Locale } from "@/lib/getDictionary";
+import { getDictionary, normalizeLocale } from "@/lib/getDictionary";
 import { lp } from "@/lib/localePath";
 
 async function markdownToHtml(markdown: string): Promise<string> {
@@ -30,7 +30,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale; slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
@@ -44,9 +44,10 @@ export async function generateMetadata({
 export default async function ArticlePage({
   params,
 }: {
-  params: Promise<{ locale: Locale; slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { locale, slug } = await params;
+  const { locale: localeParam, slug } = await params;
+  const locale = normalizeLocale(localeParam);
   const article = await getArticleBySlug(slug);
   if (!article) notFound();
 
