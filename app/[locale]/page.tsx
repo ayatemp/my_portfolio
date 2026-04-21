@@ -143,10 +143,10 @@ export default async function HomePage({
                 {/* Info */}
                 <div className="p-6">
                   <div className="font-display text-xl font-semibold text-text-primary mb-0.5">
-                    加来彩人
+                    {locale === "ja" ? "加来彩人" : "Ayato Kaku"}
                   </div>
                   <div className="font-mono text-[9px] tracking-[0.15em] text-text-muted mb-3">
-                    KAKU AYATO
+                    {locale === "ja" ? "KAKU AYATO" : "AYATO KAKU"}
                   </div>
                   <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-text-muted mb-1">
                     {t.profile_role}

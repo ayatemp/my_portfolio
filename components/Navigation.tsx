@@ -59,7 +59,7 @@ export default function Navigation({ locale, navDict }: NavProps) {
             ./
           </span>
           <span className="font-display text-lg font-semibold text-text-primary tracking-tight">
-            加来彩人
+            {locale === "ja" ? "加来彩人" : "Ayato Kaku"}
           </span>
         </Link>
 
