@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { getArticles } from "@/lib/articles";
 import { getProjects } from "@/lib/projects";
+import { getGitHubContributions } from "@/lib/github";
 import { ProfilePhoto } from "@/components/ProfilePhoto";
+import { GitHubContributions } from "@/components/GitHubContributions";
 import { getDictionary, normalizeLocale } from "@/lib/getDictionary";
 import { lp } from "@/lib/localePath";
 
@@ -49,6 +51,7 @@ export default async function HomePage({
 
   const articles = (await getArticles()).slice(0, 3);
   const projects = (await getProjects()).slice(0, 3);
+  const contributions = await getGitHubContributions();
 
   return (
     <>
@@ -194,6 +197,8 @@ export default async function HomePage({
           <div className="w-px h-12 bg-gradient-to-b from-white/20 to-transparent" />
         </div>
       </section>
+
+      <GitHubContributions contributions={contributions} locale={locale} />
 
       {/* ── MASTERS RESEARCH ───────────────────────────────── */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-24 border-t border-white/[0.06]">

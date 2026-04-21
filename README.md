@@ -17,6 +17,19 @@ Open `http://localhost:3000`.
 npm run build
 ```
 
+## GitHub Contributions
+
+The home page can render a GitHub contribution graph from the GitHub GraphQL API.
+
+Set these environment variables locally and in Vercel:
+
+```bash
+GITHUB_USERNAME=ayatemp
+GITHUB_TOKEN=your_github_token
+```
+
+To include private contributions, use a token for the same GitHub account and enable private contribution counts on the GitHub profile.
+
 ## Deployment
 
 This project is ready to deploy on Vercel.
