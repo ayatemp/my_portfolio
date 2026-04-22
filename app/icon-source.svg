@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="pageGlow" cx="50%" cy="46%" r="70%">
+      <stop offset="0%" stop-color="#1e6ee8"/>
+      <stop offset="43%" stop-color="#102c67"/>
+      <stop offset="100%" stop-color="#070b12"/>
+    </radialGradient>
+    <linearGradient id="plateFill" x1="100" y1="96" x2="430" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#010D23"/>
+      <stop offset="58%" stop-color="#00081B"/>
+      <stop offset="100%" stop-color="#00030D"/>
+    </linearGradient>
+    <linearGradient id="blueStroke" x1="132" y1="92" x2="426" y2="415" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#46A6FF"/>
+      <stop offset="52%" stop-color="#1875F7"/>
+      <stop offset="100%" stop-color="#2CA8FF"/>
+    </linearGradient>
+    <linearGradient id="letterK" x1="256" y1="201" x2="354" y2="312" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#48A7FF"/>
+      <stop offset="100%" stop-color="#1267EC"/>
+    </linearGradient>
+    <filter id="outerGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.08 0 0 0 0 0.45 0 0 0 0 1 0 0 0 0.95 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="strokeGlow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="2.8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.08 0 0 0 0 0.43 0 0 0 0 1 0 0 0 0.9 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="letterShadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000814" flood-opacity="0.65"/>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#pageGlow)"/>
+  <rect x="86" y="91" width="340" height="340" rx="78" fill="url(#plateFill)" filter="url(#outerGlow)"/>
+  <rect x="87.5" y="92.5" width="337" height="337" rx="76" fill="none" stroke="#1D7BFF" stroke-opacity="0.38"/>
+
+  <g fill="none" stroke="url(#blueStroke)" stroke-linecap="round" stroke-linejoin="round" filter="url(#strokeGlow)">
+    <path
+      d="M163 283
+         C142 260 137 213 154 177
+         C142 130 151 103 164 103
+         C190 105 224 127 241 148
+         C264 144 287 144 310 148
+         C327 127 361 105 387 103
+         C400 103 409 130 397 177
+         C414 213 409 260 388 283"
+      stroke-width="10"
+    />
+    <path
+      d="M166 283
+         C148 318 151 377 195 391
+         C240 406 328 397 356 351
+         C375 319 366 286 396 276
+         C425 266 445 291 436 326
+         C424 372 381 410 328 419"
+      stroke-width="10"
+    />
+    <path d="M102 236 C128 234 149 236 164 243" stroke-width="7"/>
+    <path d="M104 260 C132 253 151 253 166 257" stroke-width="7"/>
+    <path d="M388 243 C405 236 427 234 452 236" stroke-width="7"/>
+    <path d="M386 257 C405 253 425 253 450 260" stroke-width="7"/>
+  </g>
+
+  <g filter="url(#letterShadow)">
+    <path
+      d="M173 315L213 203H249L288 315H255L248 293H210L203 315H173ZM219 266H239L229 233L219 266Z"
+      fill="#FFFFFF"
+    />
+    <path
+      d="M278 315V203H307V248L342 203H376L334 257L381 315H343L313 276L307 283V315H278Z"
+      fill="url(#letterK)"
+    />
+  </g>
+</svg>
