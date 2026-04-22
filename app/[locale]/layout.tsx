@@ -29,9 +29,9 @@ export async function generateMetadata({
       ? "青山学院大学大学院 実世界通信研究室。HCI・人間拡張からActive Learning・LLMまで、研究とPoCの境界を走るMLエンジニア。"
       : "ML Engineer at the boundary of research and PoC — HCI, human augmentation, Active Learning, LLMs.",
     icons: {
-      icon: "/icon.svg",
-      shortcut: "/icon.svg",
-      apple: "/icon.svg",
+      icon: "/icon.png",
+      shortcut: "/icon.png",
+      apple: "/apple-icon.png",
     },
     openGraph: {
       type: "website",
