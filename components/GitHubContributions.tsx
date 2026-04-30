@@ -22,6 +22,16 @@ function formatDate(date: string, locale: "ja" | "en"): string {
   }).format(new Date(`${date}T00:00:00`));
 }
 
+function formatDateTime(date: string, locale: "ja" | "en"): string {
+  return new Intl.DateTimeFormat(locale === "ja" ? "ja-JP" : "en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZoneName: "short",
+  }).format(new Date(date));
+}
+
 export function GitHubContributions({ contributions, locale }: Props) {
   if (!contributions) return null;
 
@@ -31,6 +41,7 @@ export function GitHubContributions({ contributions, locale }: Props) {
   const title = locale === "ja" ? "Contribution Graph" : "Contribution Graph";
   const privateLabel = locale === "ja" ? "private含む" : "includes private";
   const rangeLabel = `${formatDate(contributions.from, locale)} - ${formatDate(contributions.to, locale)}`;
+  const updatedLabel = locale === "ja" ? "更新" : "Updated";
 
   return (
     <section className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-20 border-t border-white/[0.06]">
@@ -93,6 +104,9 @@ export function GitHubContributions({ contributions, locale }: Props) {
         <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="font-mono text-[10px] tracking-widest uppercase text-text-muted">
             @{contributions.username} / {rangeLabel}
+            <span className="block mt-1 text-[9px] text-text-muted/70">
+              {updatedLabel}: {formatDateTime(contributions.fetchedAt, locale)}
+            </span>
           </div>
           <div className="flex items-center gap-3">
             <span className="font-mono text-[9px] tracking-widest uppercase text-text-muted">

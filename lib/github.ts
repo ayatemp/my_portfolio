@@ -12,6 +12,7 @@ export type ContributionWeek = {
 export type GitHubContributions = {
   from: string;
   to: string;
+  fetchedAt: string;
   totalContributions: number;
   restrictedContributionsCount: number;
   weeks: ContributionWeek[];
@@ -67,6 +68,7 @@ export async function getGitHubContributions(): Promise<GitHubContributions | nu
   const to = new Date();
   const from = new Date(to);
   from.setFullYear(from.getFullYear() - 1);
+  const revalidateSeconds = 60 * 15;
 
   try {
     const response = await fetch("https://api.github.com/graphql", {
@@ -83,7 +85,7 @@ export async function getGitHubContributions(): Promise<GitHubContributions | nu
           to: isoDateTime(to),
         },
       }),
-      next: { revalidate: 60 * 60 * 6 },
+      next: { revalidate: revalidateSeconds },
     });
 
     if (!response.ok) return null;
@@ -96,6 +98,7 @@ export async function getGitHubContributions(): Promise<GitHubContributions | nu
     return {
       from: from.toISOString().slice(0, 10),
       to: to.toISOString().slice(0, 10),
+      fetchedAt: to.toISOString(),
       totalContributions: collection.contributionCalendar.totalContributions,
       restrictedContributionsCount: collection.restrictedContributionsCount,
       weeks: collection.contributionCalendar.weeks,

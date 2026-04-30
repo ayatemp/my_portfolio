@@ -12,6 +12,8 @@ const skills = [
   "C# / Unity", "React", "SQL", "LLM",
 ];
 
+export const revalidate = 900;
+
 const researchPapers = [
   {
     year: "2025",
