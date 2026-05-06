@@ -204,8 +204,6 @@ export default async function HomePage({
 
       <GitHubContributions contributions={contributions} locale={locale} />
 
-      <ProjectIntelligenceMap projects={allProjects} locale={locale} />
-
       {/* ── MASTERS RESEARCH ───────────────────────────────── */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-24 border-t border-white/[0.06]">
         <div className="flex items-end justify-between mb-10 sm:mb-12">
@@ -380,6 +378,8 @@ export default async function HomePage({
           ))}
         </div>
       </section>
+
+      <ProjectIntelligenceMap projects={allProjects} locale={locale} />
 
       {/* ── FOOTER ─────────────────────────────────────────── */}
       <footer className="border-t border-white/[0.06] mt-24">
