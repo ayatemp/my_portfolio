@@ -38,7 +38,7 @@ export function GitHubContributions({ contributions, locale }: Props) {
   const allDays = contributions.weeks.flatMap((week) => week.contributionDays);
   const max = Math.max(...allDays.map((day) => day.contributionCount), 1);
   const label = locale === "ja" ? "GitHub Activity" : "GitHub Activity";
-  const title = locale === "ja" ? "Contribution Graph" : "Contribution Graph";
+  const title = locale === "ja" ? "Recent Contribution Graph" : "Recent Contribution Graph";
   const privateLabel = locale === "ja" ? "private含む" : "includes private";
   const rangeLabel = `${formatDate(contributions.from, locale)} - ${formatDate(contributions.to, locale)}`;
   const updatedLabel = locale === "ja" ? "更新" : "Updated";
@@ -61,7 +61,7 @@ export function GitHubContributions({ contributions, locale }: Props) {
               {contributions.totalContributions.toLocaleString()}
             </div>
             <div className="font-mono text-[9px] tracking-widest uppercase text-text-muted mt-1">
-              Contributions
+              Recent Contributions
             </div>
           </div>
           <div>

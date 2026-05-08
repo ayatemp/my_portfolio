@@ -67,7 +67,7 @@ export async function getGitHubContributions(): Promise<GitHubContributions | nu
 
   const to = new Date();
   const from = new Date(to);
-  from.setFullYear(from.getFullYear() - 1);
+  from.setMonth(from.getMonth() - 2);
   const revalidateSeconds = 60 * 15;
 
   try {
