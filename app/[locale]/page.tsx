@@ -5,7 +5,6 @@ import { getGitHubContributions } from "@/lib/github";
 import { ProfilePhoto } from "@/components/ProfilePhoto";
 import { GitHubContributions } from "@/components/GitHubContributions";
 import { ProjectIntelligenceMap } from "@/components/ProjectIntelligenceMap";
-import { ResearchShipLoop } from "@/components/ResearchShipLoop";
 import { getDictionary, normalizeLocale } from "@/lib/getDictionary";
 import { lp } from "@/lib/localePath";
 
@@ -381,8 +380,6 @@ export default async function HomePage({
       </section>
 
       <ProjectIntelligenceMap projects={allProjects} locale={locale} />
-
-      <ResearchShipLoop locale={locale} />
 
       {/* ── FOOTER ─────────────────────────────────────── */}
       <footer className="border-t border-white/[0.06] mt-24">
