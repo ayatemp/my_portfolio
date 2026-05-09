@@ -41,7 +41,11 @@ export async function getProjects(): Promise<Project[]> {
     } satisfies Project;
   });
 
-  return projects.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+  return projects.sort((a, b) => {
+    const featured = Number(b.featured) - Number(a.featured);
+    if (featured !== 0) return featured;
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
