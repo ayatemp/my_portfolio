@@ -16,6 +16,8 @@ export default function ProjectCard({ project, index, locale = "ja" }: Props) {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [glowPos, setGlowPos] = useState({ x: 50, y: 50 });
   const [hovered, setHovered] = useState(false);
+  const isSpotlight = project.spotlight;
+  const spotlightLabel = locale === "ja" ? "優秀ポスター賞級" : "Flagship Project";
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const el = cardRef.current;
@@ -53,14 +55,27 @@ export default function ProjectCard({ project, index, locale = "ja" }: Props) {
       data-delay={index}
     >
       <Link href={`/${locale}/projects/${project.slug}`} className="block h-full">
-        <div className="relative h-80 border border-white/[0.08] rounded-xl overflow-hidden bg-bg-surface group">
+        <div
+          className={`relative h-80 rounded-xl overflow-hidden bg-bg-surface group transition-colors duration-300 ${
+            isSpotlight
+              ? "border border-accent-amber/45 shadow-[0_0_0_1px_rgba(255,213,128,0.08),0_28px_90px_rgba(255,213,128,0.10)]"
+              : "border border-white/[0.08]"
+          }`}
+        >
           {/* Spotlight glow that follows cursor */}
           <div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
             style={{
-              background: `radial-gradient(circle at ${glowPos.x}% ${glowPos.y}%, rgba(255,213,128,0.12) 0%, transparent 60%)`,
+              background: `linear-gradient(135deg, rgba(255,213,128,0.10), transparent 34%), radial-gradient(circle at ${glowPos.x}% ${glowPos.y}%, rgba(110,255,212,0.10) 0%, transparent 58%)`,
             }}
           />
+          {isSpotlight ? (
+            <>
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-amber to-transparent" />
+              <div className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-accent-amber/60 via-white/10 to-transparent" />
+              <div className="absolute right-0 top-0 h-full w-px bg-gradient-to-b from-accent-cyan/45 via-white/10 to-transparent" />
+            </>
+          ) : null}
 
           {/* Top border glow on hover */}
           <div
@@ -75,6 +90,11 @@ export default function ProjectCard({ project, index, locale = "ja" }: Props) {
 
           {/* Content */}
           <div className="relative z-10 p-7 h-full flex flex-col">
+            {isSpotlight ? (
+              <div className="mb-4 inline-flex w-fit items-center gap-2 rounded-sm border border-accent-amber/35 bg-accent-amber/10 px-3 py-1.5 font-mono text-[9px] font-medium uppercase tracking-[0.2em] text-accent-amber">
+                {spotlightLabel}
+              </div>
+            ) : null}
             {/* Category */}
             <div className="font-mono text-[9px] tracking-[0.25em] uppercase text-accent-amber/60 mb-4">
               {project.category}
@@ -86,7 +106,7 @@ export default function ProjectCard({ project, index, locale = "ja" }: Props) {
             </h3>
 
             {/* Description */}
-            <p className="font-sans text-sm text-text-secondary leading-relaxed flex-1">
+            <p className="font-sans text-sm text-text-secondary leading-relaxed flex-1 line-clamp-5">
               {project.description}
             </p>
 

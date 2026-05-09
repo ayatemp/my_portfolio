@@ -12,6 +12,7 @@ export type Project = {
   stack: string[];
   date: string;
   featured: boolean;
+  spotlight: boolean;
   content: string;
   links?: { label: string; url: string }[];
 };
@@ -36,12 +37,15 @@ export async function getProjects(): Promise<Project[]> {
       stack: data.stack ?? [],
       date: data.date ?? "",
       featured: data.featured ?? false,
+      spotlight: data.spotlight ?? false,
       content,
       links: data.links ?? [],
     } satisfies Project;
   });
 
   return projects.sort((a, b) => {
+    const spotlight = Number(b.spotlight) - Number(a.spotlight);
+    if (spotlight !== 0) return spotlight;
     const featured = Number(b.featured) - Number(a.featured);
     if (featured !== 0) return featured;
     return new Date(b.date).getTime() - new Date(a.date).getTime();

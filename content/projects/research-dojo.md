@@ -5,6 +5,7 @@ category: "Research Tooling"
 stack: ["Next.js", "Electron", "Codex App Server", "SQLite", "GitHub Actions"]
 date: "2026-05-09"
 featured: true
+spotlight: true
 links:
   - label: "Desktop Release"
     url: "https://github.com/ayatemp/research-dojo-PCapp/releases/latest"
