@@ -52,11 +52,11 @@ export default async function ProjectDetailPage({
   const t = dict.projects;
   const htmlContent = await markdownToHtml(project.content);
   const isSpotlight = project.spotlight;
-  const spotlightLabel = locale === "ja" ? "優秀ポスター賞級プロジェクト" : "Flagship Project";
+  const spotlightLabel = locale === "ja" ? "自信作プロジェクト" : "My Best Work";
   const spotlightCopy =
     locale === "ja"
-      ? "今いちばん自信のある研究ツールとして、設計・実装・配布まで磨き込んだ作品です。"
-      : "A polished research tool I am especially confident in, from product design to desktop distribution.";
+      ? "研究体験への問題意識から、設計・実装・配布まで自分なりに作り込んだ作品です。"
+      : "A research tool I am especially proud of, shaped from product design through desktop distribution.";
 
   return (
     <div className="min-h-screen pt-32 pb-24">

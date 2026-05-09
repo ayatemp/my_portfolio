@@ -345,7 +345,7 @@ export default async function HomePage({
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           {projects.map((project) => {
             const isSpotlight = project.spotlight;
-            const spotlightLabel = locale === "ja" ? "優秀ポスター賞級" : "Flagship";
+            const spotlightLabel = locale === "ja" ? "自信作" : "Best Work";
 
             return (
               <Link key={project.slug} href={lp(locale, `/projects/${project.slug}`)} className="group block">

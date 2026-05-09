@@ -17,7 +17,7 @@ export default function ProjectCard({ project, index, locale = "ja" }: Props) {
   const [glowPos, setGlowPos] = useState({ x: 50, y: 50 });
   const [hovered, setHovered] = useState(false);
   const isSpotlight = project.spotlight;
-  const spotlightLabel = locale === "ja" ? "優秀ポスター賞級" : "Flagship Project";
+  const spotlightLabel = locale === "ja" ? "自信作" : "My Best Work";
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const el = cardRef.current;
