@@ -345,34 +345,21 @@ export default async function HomePage({
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           {projects.map((project) => {
             const isSpotlight = project.spotlight;
-            const spotlightLabel = locale === "ja" ? "自信作" : "Best Work";
 
             return (
               <Link key={project.slug} href={lp(locale, `/projects/${project.slug}`)} className="group block">
-                <div
-                  className={`relative h-64 rounded-lg bg-bg-surface overflow-hidden transition-all duration-300 ${
-                    isSpotlight
-                      ? "border border-accent-amber/45 shadow-[0_0_0_1px_rgba(255,213,128,0.08),0_24px_80px_rgba(255,213,128,0.10)] hover:border-accent-amber/70"
-                      : "border border-white/[0.08] hover:border-accent-amber/30"
-                  }`}
-                >
+                <div className="relative h-64 border border-white/[0.08] rounded-lg bg-bg-surface overflow-hidden hover:border-accent-amber/30 transition-all duration-300">
                   <div
                     className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{ background: "linear-gradient(90deg, transparent, #FFD580, transparent)" }}
                   />
                   {isSpotlight ? (
-                    <>
-                      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-amber to-transparent" />
-                      <div className="absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-accent-amber/[0.08] to-transparent" />
-                    </>
+                    <div aria-hidden="true" className="absolute right-5 top-5 z-10 text-sm leading-none text-accent-amber/75">
+                      ★
+                    </div>
                   ) : null}
                   <div className="p-6 h-full flex flex-col justify-between">
                     <div>
-                      {isSpotlight ? (
-                        <div className="mb-3 inline-flex rounded-sm border border-accent-amber/35 bg-accent-amber/10 px-2.5 py-1 font-mono text-[8px] font-medium uppercase tracking-[0.18em] text-accent-amber">
-                          {spotlightLabel}
-                        </div>
-                      ) : null}
                       <div className="font-mono text-[9px] tracking-widest uppercase text-accent-amber/70 mb-3">
                         {project.category}
                       </div>

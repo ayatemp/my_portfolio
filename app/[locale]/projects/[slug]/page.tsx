@@ -52,11 +52,6 @@ export default async function ProjectDetailPage({
   const t = dict.projects;
   const htmlContent = await markdownToHtml(project.content);
   const isSpotlight = project.spotlight;
-  const spotlightLabel = locale === "ja" ? "自信作プロジェクト" : "My Best Work";
-  const spotlightCopy =
-    locale === "ja"
-      ? "研究体験への問題意識から、設計・実装・配布まで自分なりに作り込んだ作品です。"
-      : "A research tool I am especially proud of, shaped from product design through desktop distribution.";
 
   return (
     <div className="min-h-screen pt-32 pb-24">
@@ -69,35 +64,16 @@ export default async function ProjectDetailPage({
 
       {/* Hero panel */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 mb-16 animate-on-load stagger-1">
-        <div
-          className={`relative rounded-xl bg-bg-surface overflow-hidden p-10 ${
-            isSpotlight
-              ? "border border-accent-amber/35 shadow-[0_0_0_1px_rgba(255,213,128,0.08),0_32px_100px_rgba(255,213,128,0.10)]"
-              : "border border-white/[0.08]"
-          }`}
-        >
+        <div className="relative border border-white/[0.08] rounded-xl bg-bg-surface overflow-hidden p-10">
           <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #FFD580 30%, transparent)" }} />
-          {isSpotlight ? (
-            <>
-              <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-accent-amber/[0.08] to-transparent" />
-              <div className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-accent-amber/70 via-white/10 to-transparent" />
-              <div className="absolute right-0 top-0 h-full w-px bg-gradient-to-b from-accent-cyan/50 via-white/10 to-transparent" />
-            </>
-          ) : null}
 
-          {isSpotlight ? (
-            <div className="relative mb-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <span className="inline-flex w-fit items-center rounded-sm border border-accent-amber/40 bg-accent-amber/10 px-3 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-accent-amber">
-                {spotlightLabel}
+          <div className="mb-4 flex items-center gap-2 font-mono text-[9px] tracking-[0.25em] uppercase text-accent-amber/70">
+            <span>{project.category}</span>
+            {isSpotlight ? (
+              <span aria-hidden="true" className="text-sm leading-none text-accent-amber/80">
+                ★
               </span>
-              <span className="font-mono text-[10px] leading-5 text-text-muted">
-                {spotlightCopy}
-              </span>
-            </div>
-          ) : null}
-
-          <div className="font-mono text-[9px] tracking-[0.25em] uppercase text-accent-amber/70 mb-4">
-            {project.category}
+            ) : null}
           </div>
 
           <h1 className="font-display font-bold text-display-md text-text-primary leading-tight mb-4">
