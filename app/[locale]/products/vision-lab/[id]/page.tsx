@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import VisionDemoViewer from "@/components/VisionDemoViewer";
-import VisionMazeLive from "@/components/VisionMazeLive";
+import VisionDetectionLive from "@/components/VisionDetectionLive";
+import VisionExperimentsLive from "@/components/VisionExperimentsLive";
+import VisionWorldLive from "@/components/VisionWorldLive";
 import { normalizeLocale } from "@/lib/getDictionary";
 import { getVisionDemos } from "@/lib/visionDemos";
 import credits from "@/lib/vision-demo-credits.json";
@@ -43,6 +45,8 @@ export default async function VisionDemoPage({ params }: PageProps) {
   const catalog = `/${locale}/products`;
   const group = groups[locale][demo.group];
   const usesOwl = demo.model === "OWLv2";
+  const isTextDriven = id === "06-text-detection" || id === "10-packing-check";
+  const usesBrowserOwl = isTextDriven || id === "09-detection-stress";
 
   return (
     <div className={styles.frame}>
@@ -60,23 +64,29 @@ export default async function VisionDemoPage({ params }: PageProps) {
               <p className={styles.description}>{demo.description}</p>
             </div>
             <dl className={styles.specification}>
-              <div><dt>{isJa ? "モデル" : "Model"}</dt><dd>{demo.model}</dd></div>
-              <div><dt>{isJa ? "比較条件" : "Conditions"}</dt><dd>{demo.cases.length}</dd></div>
+              <div><dt>{isJa ? "モデル" : "Model"}</dt><dd>{usesBrowserOwl ? "OWLv2 / OWL-ViT" : demo.model}</dd></div>
             </dl>
           </header>
 
-          {id === "04-maze-rollout" && (
-            <div className={styles.live}><VisionMazeLive locale={locale} /></div>
-          )}
+          <div className={styles.live} key={id}>
+            {demo.group === "world"
+              ? <VisionWorldLive locale={locale} demoId={id} />
+              : isTextDriven
+                ? <VisionDetectionLive locale={locale} demoId={id} />
+                : <VisionExperimentsLive locale={locale} demoId={id} />}
+          </div>
 
-          <VisionDemoViewer
-            key={demo.id}
-            locale={locale}
-            demoId={demo.id}
-            cases={demo.cases}
-            label={demo.control}
-            baselineLabel={isJa ? "比較元" : "Reference"}
-          />
+          <details className={styles.archive}>
+            <summary>{isJa ? "保存済みの実験結果を比較" : "Compare saved experiment results"}</summary>
+            <VisionDemoViewer
+              key={demo.id}
+              locale={locale}
+              demoId={demo.id}
+              cases={demo.cases}
+              label={demo.control}
+              baselineLabel={isJa ? "比較元" : "Reference"}
+            />
+          </details>
 
           {usesOwl && (
             <details className={styles.credits}>

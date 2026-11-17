@@ -29,6 +29,7 @@
 .wrap {
   width: min(100% - 100px, 1290px);
   margin-inline: auto;
+  padding-bottom: 2.1rem;
 }
 
 .hero {
@@ -151,10 +152,37 @@
   aspect-ratio: 1.59;
 }
 
-.featureImage img {
-  object-fit: contain;
-  padding: 10px 8px 4px;
+.featureImage svg { display: block; width: 100%; height: 100%; }
+
+.featureLegend {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 14px;
+  color: #e3e9da;
+  font: 500 clamp(8px, 1.2vw, 10px)/1.25 var(--mono);
 }
+
+.featureLegend span { display: inline-flex; align-items: center; gap: 5px; }
+.featureLegend i { display: inline-block; width: 14px; border-top: 1px solid #c9f882; }
+.featureLegend span:last-child i { border-top-style: dashed; }
+
+.featureTimeline {
+  display: grid;
+  grid-template-columns: 30px 1fr auto;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 12px;
+  border-top: 1px solid #35434a;
+  color: #ebf0dd;
+  font: 500 .68rem/1.25 var(--mono);
+}
+
+.featureTimeline button { width: 30px; height: 28px; background: #22332c; color: var(--lime); }
+.featureTimeline input { width: 100%; min-width: 0; accent-color: var(--lime); }
+.featureTimeline input:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
 
 .featureControls {
   display: flex;
@@ -188,7 +216,7 @@
 .photoPeek {
   position: absolute;
   right: 0;
-  bottom: 47px;
+  bottom: 121px;
   width: clamp(118px, 14vw, 182px);
   padding: 6px;
   background: #fbfcef;
@@ -371,13 +399,6 @@
 }
 
 .card:hover .cardLink > span { background-color: var(--lime); border-color: var(--lime); }
-
-.footer {
-  padding: 18px 0 32px;
-  color: var(--quiet);
-  font-size: 0.78rem;
-  line-height: 1.6;
-}
 
 @media (max-width: 1050px) {
   .wrap { width: calc(100% - 64px); }

@@ -77,7 +77,7 @@ function DemoResult({
           // The media are complete, locally generated diagrams, or photos with model annotations.
           // Render every pixel without cropping or resizing through the image optimizer.
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={media} alt={demoCase.name} decoding="async" />
+          <img src={media} alt={demoCase.name} decoding="async" loading="lazy" />
         )}
       </div>
       <figcaption aria-live="polite" className={styles.caption}>{demoCase.detail}</figcaption>

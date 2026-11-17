@@ -2,6 +2,7 @@
 
 import { useId, useMemo, useState } from "react";
 import model from "@/lib/vision-maze-model.json";
+import { useWorldPlayback } from "@/lib/vision-world-playback";
 import styles from "./VisionMazeLive.module.css";
 
 const [FLOOR, WALL, KEY, DOOR, GOAL] = [0, 1, 2, 3, 4];
@@ -23,6 +24,8 @@ const copy = {
     examples: "ルートの例",
     presets: ["鍵を取る", "鍵を取らない", "壁に向かう"],
     run: "予測する",
+    play: "再生",
+    pause: "一時停止",
     timeline: "手順",
     learned: "学習モデル",
     simulator: "シミュレータ",
@@ -43,6 +46,8 @@ const copy = {
     examples: "Example routes",
     presets: ["Collect the key", "Skip the key", "Test a wall"],
     run: "Run prediction",
+    play: "Play",
+    pause: "Pause",
     timeline: "Timeline",
     learned: "Learned model",
     simulator: "Simulator",
@@ -133,10 +138,14 @@ function MazeBoard({
               {tile === KEY && "K"}
               {tile === DOOR && "D"}
               {tile === GOAL && !player && "G"}
-              {player && <span className={styles.player} data-blocked={state.blocked} />}
             </span>
           );
         }))}
+        <span
+          className={styles.player}
+          data-blocked={state.blocked}
+          style={{ left: `${10 * (playerColumn + 0.5)}%`, top: `${100 * (playerRow + 0.5) / state.board.length}%` }}
+        />
       </div>
       <div className={styles.boardState}>
         <span>{state.hasKey ? labels.key : labels.noKey}</span>
@@ -152,7 +161,8 @@ export default function VisionMazeLive({ locale }: { locale: "ja" | "en" }) {
   const t = copy[locale];
   const [draft, setDraft] = useState(ROUTES[0]);
   const [route, setRoute] = useState(ROUTES[0]);
-  const [step, setStep] = useState(ROUTES[0].length);
+  const playback = useWorldPlayback(Math.max(0.5, route.length * 0.42));
+  const step = Math.floor(playback.progress * route.length);
   const predicted = useMemo(() => rollout(route, true), [route]);
   const actual = useMemo(() => rollout(route, false), [route]);
   const differences = predicted.slice(1, step + 1).filter((state, index) => {
@@ -164,7 +174,7 @@ export default function VisionMazeLive({ locale }: { locale: "ja" | "en" }) {
   function run(input: string) {
     setDraft(input);
     setRoute(input);
-    setStep(input.length);
+    playback.replay(input.length > 0 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }
 
   return (
@@ -209,8 +219,11 @@ export default function VisionMazeLive({ locale }: { locale: "ja" | "en" }) {
       </div>
       <div className={styles.timeline}>
         <div className={styles.timelineHeader}>
+          <button type="button" className={styles.control} onClick={playback.pauseOrPlay} disabled={route.length === 0}>
+            {playback.playing ? t.pause : t.play}
+          </button>
           <label htmlFor={`${id}-step`}>{t.timeline}</label>
-          <output htmlFor={`${id}-step`}>
+          <output htmlFor={`${id}-step`} aria-live="off">
             {t.step(step, route.length)} · {step === 0 ? t.start : t.direction[route[step - 1] as Direction]}
           </output>
         </div>
@@ -220,17 +233,17 @@ export default function VisionMazeLive({ locale }: { locale: "ja" | "en" }) {
           min={0}
           max={route.length}
           value={step}
-          onChange={(event) => setStep(Number(event.target.value))}
+          onChange={(event) => playback.seek(Number(event.target.value) / route.length)}
           disabled={route.length === 0}
         />
       </div>
-      <div className={styles.boards}>
+      <div className={styles.boards} ref={playback.viewport}>
         <MazeBoard title={t.learned} history={predicted} step={step} labels={t} />
         <MazeBoard title={t.simulator} history={actual} step={step} labels={t} />
       </div>
       <footer className={styles.footer}>
         <span>{t.tileLegend}</span>
-        <span role="status">{t.status(differences, step)}</span>
+        <span role="status" aria-live={playback.playing ? "off" : "polite"}>{t.status(differences, step)}</span>
       </footer>
     </section>
   );

@@ -9,27 +9,23 @@ import styles from "./products.module.css";
 const copy = {
   ja: {
     description:
-      "操作で軌跡がどう変わるか、画像から何を見つけられるか。条件を変えて、学習したモデルの出力を比べてみてください。",
+      "車を動かす、物体を追跡する、写真から探す。操作を変えて、モデルが何を予測し、どこで外すのかを確かめる10本のデモ。",
     worldDescription: "操作と観測から、物体の動きや環境の次の状態を予測します。",
     visionDescription: "物体を見つけ、追跡し、どんな条件で見失うかを確かめます。",
     openDemo: "試す",
-    liveInference: "ブラウザで推論",
     seeDemos: "デモを見る",
     demoList: "デモ一覧",
     selectAction: "自車の行動を選ぶ",
-    sourceNote: "各デモでは事前に実行した学習・推論の結果を比較できます。",
   },
   en: {
     description:
-      "How does an action change a trajectory? What can a model find in a photo? Change the conditions and compare the outputs yourself.",
+      "Move a car, track an object, or search a photo. Ten interactive demos show how models respond to your choices and where their predictions go wrong.",
     worldDescription: "Predict how objects and environments change as actions and observations vary.",
     visionDescription: "Find and track objects, and see which conditions make them harder to detect.",
     openDemo: "Try demo",
-    liveInference: "Runs in your browser",
     seeDemos: "Explore demos",
     demoList: "Demo index",
     selectAction: "Choose an action for the ego vehicle",
-    sourceNote: "The demos compare results from prior training and inference runs.",
   },
 } as const;
 
@@ -73,13 +69,13 @@ export default async function ProductsPage({ params }: Params) {
 
             {intersection && textDetection && (
               <FeaturedPreview
+                locale={locale}
                 demoHref={`${demoPath}/${intersection.id}`}
                 demoTitle={intersection.title}
                 scenarios={intersection.cases.map((scenario) => ({
                   name: scenario.name,
-                  image: `/products/vision-lab/${intersection.id}/${scenario.image}`,
                 }))}
-                initialScenario={Math.min(1, intersection.cases.length - 1)}
+                initialScenario={intersection.cases.length - 1}
                 conditionLabel={text.selectAction}
                 photo={{
                   href: `${demoPath}/${textDetection.id}`,
@@ -117,7 +113,6 @@ export default async function ProductsPage({ params }: Params) {
                       demo={demo}
                       href={`${demoPath}/${demo.id}`}
                       actionLabel={text.openDemo}
-                      modelLabel={demo.id === "04-maze-rollout" ? text.liveInference : demo.model}
                     />
                   </li>
                 ))}
@@ -125,18 +120,16 @@ export default async function ProductsPage({ params }: Params) {
             </section>
           ))}
 
-          <footer className={styles.footer}>{text.sourceNote}</footer>
         </div>
       </div>
     </div>
   );
 }
 
-function DemoCard({ demo, href, actionLabel, modelLabel }: {
+function DemoCard({ demo, href, actionLabel }: {
   demo: Demo;
   href: string;
   actionLabel: string;
-  modelLabel: string;
 }) {
   return (
     <Link href={href} className={styles.card} aria-label={demo.title}>
@@ -150,7 +143,7 @@ function DemoCard({ demo, href, actionLabel, modelLabel }: {
         />
       </div>
       <div className={styles.cardCopy}>
-        <p className={styles.model}>{modelLabel}</p>
+        <p className={styles.model}>{demo.model}</p>
         <h3>{demo.title}</h3>
         <p className={styles.cardDesc}>{demo.description}</p>
         <span className={styles.cardLink} aria-hidden="true">

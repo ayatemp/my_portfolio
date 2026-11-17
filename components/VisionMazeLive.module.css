@@ -132,6 +132,18 @@
   gap: 6px;
 }
 
+.control {
+  background: var(--pine);
+  color: #fff;
+  padding: 5px 9px;
+  min-height: 31px;
+  font-size: .76rem;
+  font-weight: 650;
+}
+
+.control:disabled { opacity: .55; }
+.timelineHeader label { flex: 1; margin: 0; }
+
 .timelineHeader output {
   color: var(--pine);
   font-size: 0.79rem;
@@ -167,6 +179,7 @@
 }
 
 .board {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(10, minmax(0, 1fr));
   gap: clamp(1px, 0.31vw, 4px);
@@ -197,12 +210,14 @@
 
 .player {
   position: absolute;
-  width: 47%;
-  height: 47%;
+  width: 4.7%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
   border: 2px solid #eaf2dc;
   border-radius: 50%;
   background: #214d3a;
   box-shadow: 0 0 0 1px #214d3a;
+  transition: left 180ms ease-out, top 180ms ease-out, background 120ms linear;
 }
 
 .player[data-blocked="true"] {
@@ -247,4 +262,8 @@
 @media (max-width: 560px) {
   .boards { grid-template-columns: minmax(0, 1fr); }
   .tile { font-size: 0.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .player { transition: none; }
 }

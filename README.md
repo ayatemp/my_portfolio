@@ -11,6 +11,16 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+## Vision Lab
+
+The Japanese and English Products pages host ten interactive demos. The world-model demos run their exported fitted models in the browser. Reference image selections and stress-test settings use measured OWLv2 results for the supplied photos. Tracking runs the association algorithm in the browser over CNN detections from synthetic clips. The text search and packing demos support local photos with the browser's OWL-ViT model, which also runs on demand in the detection stress test. The browser downloads this model on first use.
+
+To regenerate the Products page's intersection preview from the original experiment, use the Python environment in the sibling `ayarnte-project-forWEB` repository:
+
+```bash
+../ayarnte-project-forWEB/.venv/bin/python scripts/export-intersection-preview.py ../ayarnte-project-forWEB
+```
+
 ## Production Build
 
 ```bash

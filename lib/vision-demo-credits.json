@@ -7,6 +7,13 @@
     "licenseHref": "https://www.apache.org/licenses/LICENSE-2.0"
   },
   {
+    "label": "OWL-ViT Base Patch32 · ONNX",
+    "href": "https://huggingface.co/Xenova/owlvit-base-patch32/tree/b75f4e52949639c3bb0b96546ea4149482f6e7ef",
+    "credit": "Google · Xenova ONNX conversion",
+    "license": "Apache 2.0",
+    "licenseHref": "https://www.apache.org/licenses/LICENSE-2.0"
+  },
+  {
     "label": "COCO val2017 annotations",
     "href": "https://cocodataset.org/#termsofuse",
     "credit": "COCO Consortium",

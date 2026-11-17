@@ -25,6 +25,7 @@ type DemoInfo = {
   control: [string, string];
   title: string;
   description: string;
+  descriptionJa?: string;
   names: string[];
   detail: (entry: RawCase, index: number) => string;
 };
@@ -45,7 +46,8 @@ const info: Record<string, DemoInfo> = {
     model: "MLP regressor",
     control: ["自車の行動", "Ego vehicle action"],
     title: "One intersection, three futures",
-    description: "From the same pair of frames, predict the paths of both cars 2.5 seconds ahead. Solid lines show the simulator and dashed lines show the learned paths.",
+    description: "Choose whether to stop, creep forward, or proceed and compare the two cars’ paths side by side in the learned model and the simulator.",
+    descriptionJa: "停止・徐行・進行を選び、2台の車の動きを学習モデルとシミュレータで並べて比べます。",
     names: ["Stop", "Creep forward", "Proceed"],
     detail: (entry) => {
       const [, simulated, forecast, error] = entry.detail.match(/[\d.]+/g) ?? [];
@@ -90,7 +92,8 @@ const info: Record<string, DemoInfo> = {
     model: "OWLv2",
     control: ["検索語", "Text query"],
     title: "Find an object with words",
-    description: "Change the English query and see where OWLv2 finds the requested object in the same photo.",
+    description: "Change the English query to find objects in the sample or in a photo you choose.",
+    descriptionJa: "英語の検索語を変えて、サンプル画像や自分の写真から物体を探します。",
     names: [],
     detail: (entry) => {
       const [count, threshold, ...scores] = entry.detail.match(/[\d.]+/g) ?? [];
@@ -151,7 +154,7 @@ export function getVisionDemos(locale: Locale) {
       id,
       group: (id < "06" ? "world" : "vision") as "world" | "vision",
       title: isJa ? result.title : demo.title,
-      description: isJa ? result.summary : demo.description,
+      description: isJa ? (demo.descriptionJa ?? result.summary) : demo.description,
       model: demo.model,
       control: demo.control[isJa ? 0 : 1],
       preview: `/products/vision-lab/${id}/${first.poster ?? first.image}`,
