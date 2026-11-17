@@ -21,6 +21,7 @@ export default function Navigation({ locale, navDict }: NavProps) {
     { href: `/${locale}/research`, label: navDict.research },
     { href: `/${locale}/articles`, label: navDict.articles },
     { href: `/${locale}/projects`, label: navDict.projects },
+    { href: `/${locale}/products`, label: navDict.products },
   ];
 
   const otherLocale: Locale = locale === "ja" ? "en" : "ja";
@@ -32,7 +33,7 @@ export default function Navigation({ locale, navDict }: NavProps) {
 
   function isActive(href: string) {
     if (href === `/${locale}`) return pathname === `/${locale}`;
-    return pathname.startsWith(href);
+    return pathname === href || pathname.startsWith(`${href}/`);
   }
 
   useEffect(() => {
@@ -44,7 +45,7 @@ export default function Navigation({ locale, navDict }: NavProps) {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+        scrolled || isActive(`/${locale}/products`)
           ? "bg-[#06060F]/80 backdrop-blur-xl border-b border-white/[0.06]"
           : "bg-transparent"
       }`}
@@ -69,6 +70,7 @@ export default function Navigation({ locale, navDict }: NavProps) {
             <li key={href}>
               <Link
                 href={href}
+                aria-current={isActive(href) ? "page" : undefined}
                 className={`font-mono text-xs tracking-widest uppercase transition-colors duration-200 ${
                   isActive(href)
                     ? "text-accent-cyan"
@@ -95,7 +97,9 @@ export default function Navigation({ locale, navDict }: NavProps) {
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden flex flex-col gap-1.5 p-2"
-          aria-label="Toggle menu"
+          aria-label={locale === "ja" ? "メニューを切り替える" : "Toggle menu"}
+          aria-expanded={menuOpen}
+          aria-controls="portfolio-mobile-nav"
         >
           <span
             className={`block w-5 h-px bg-text-primary transition-all duration-300 ${
@@ -117,6 +121,8 @@ export default function Navigation({ locale, navDict }: NavProps) {
 
       {/* Mobile menu */}
       <div
+        id="portfolio-mobile-nav"
+        inert={!menuOpen}
         className={`md:hidden transition-all duration-300 overflow-hidden ${
           menuOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
         }`}
@@ -128,6 +134,7 @@ export default function Navigation({ locale, navDict }: NavProps) {
                 <Link
                   href={href}
                   onClick={() => setMenuOpen(false)}
+                aria-current={isActive(href) ? "page" : undefined}
                   className="font-mono text-xs tracking-widest uppercase text-text-secondary hover:text-accent-cyan transition-colors"
                 >
                   {label}

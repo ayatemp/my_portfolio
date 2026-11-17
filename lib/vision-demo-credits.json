@@ -1,0 +1,37 @@
+[
+  {
+    "label": "OWLv2 Base Patch16 Ensemble",
+    "href": "https://huggingface.co/google/owlv2-base-patch16-ensemble/tree/cfd3195ba4ea9592eec887ded089f4c08eff231d",
+    "credit": "Google",
+    "license": "Apache 2.0",
+    "licenseHref": "https://www.apache.org/licenses/LICENSE-2.0"
+  },
+  {
+    "label": "COCO val2017 annotations",
+    "href": "https://cocodataset.org/#termsofuse",
+    "credit": "COCO Consortium",
+    "license": "CC BY 4.0",
+    "licenseHref": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  {
+    "label": "G4 flat panel iMac - kitchen computer",
+    "href": "https://www.flickr.com/photos/mac-minimalist/4212612461/",
+    "credit": "Michael Gorzka",
+    "license": "CC BY 2.0",
+    "licenseHref": "https://creativecommons.org/licenses/by/2.0/"
+  },
+  {
+    "label": "satellite office",
+    "href": "https://www.flickr.com/photos/t_trace/428244913/",
+    "credit": "Taiyo Fujii",
+    "license": "CC BY 2.0",
+    "licenseHref": "https://creativecommons.org/licenses/by/2.0/"
+  },
+  {
+    "label": "Little Annoyances of Life: The Mouse That Doesn't Click",
+    "href": "https://www.flickr.com/photos/fabricio/2668055050/",
+    "credit": "Fabricio Zuardi",
+    "license": "CC BY 2.0",
+    "licenseHref": "https://creativecommons.org/licenses/by/2.0/"
+  }
+]

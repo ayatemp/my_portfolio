@@ -1,0 +1,250 @@
+.live {
+  --ink: #15251f;
+  --pine: #164537;
+  --paper: #fbfbf3;
+  --lime: #dceb9d;
+  --line: #ccd4c9;
+  --muted: #526259;
+  min-width: 0;
+  padding: clamp(15px, 3vw, 32px);
+  color: var(--ink);
+  color-scheme: light;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.header h2 {
+  margin: 0 0 6px;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 680;
+  line-height: 1.2;
+}
+
+.header p {
+  margin: 0 0 19px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.form {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.field {
+  flex: 1 1 250px;
+  min-width: 0;
+}
+
+.field label,
+.timelineHeader label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.field input {
+  width: 100%;
+  min-height: 42px;
+  padding: 8px 12px;
+  color: var(--ink);
+  border: 1px solid #8ba293;
+  background: #f5f6ee;
+  font-family: var(--font-jetbrains, monospace);
+  font-size: 0.88rem;
+  letter-spacing: 0.11em;
+}
+
+.directions,
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.directions button,
+.presets button,
+.run {
+  border: 1px solid #a1b1a4;
+  color: var(--pine);
+  background: #f5f6ee;
+  cursor: pointer;
+}
+
+.directions button {
+  min-width: 42px;
+  min-height: 42px;
+  font-size: 1.05rem;
+}
+
+.directions button:hover:enabled,
+.presets button:hover {
+  border-color: var(--pine);
+  background: #ebefdd;
+}
+
+.directions button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.run {
+  min-height: 42px;
+  padding: 8px 14px;
+  border-color: var(--pine);
+  color: white;
+  background: var(--pine);
+  font-size: 0.83rem;
+  font-weight: 650;
+}
+
+.run:hover {
+  color: var(--ink);
+  background: var(--lime);
+}
+
+.presets {
+  margin-top: 10px;
+}
+
+.presets button {
+  min-height: 35px;
+  padding: 5px 9px;
+  font-size: 0.75rem;
+}
+
+.timeline {
+  margin-top: 18px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: #edeee3;
+}
+
+.timelineHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.timelineHeader output {
+  color: var(--pine);
+  font-size: 0.79rem;
+  font-weight: 700;
+}
+
+.timeline input {
+  margin: 3px 0 0;
+  width: 100%;
+  accent-color: var(--pine);
+}
+
+.boards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.boardPanel {
+  min-width: 0;
+  margin: 0;
+  padding: clamp(8px, 2vw, 17px);
+  color: #e7f2e5;
+  background: #192a25;
+}
+
+.boardPanel figcaption {
+  margin-bottom: 10px;
+  color: var(--lime);
+  font-size: 0.84rem;
+  font-weight: 650;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: clamp(1px, 0.31vw, 4px);
+  width: 100%;
+}
+
+.tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: 2px;
+  color: #19261c;
+  background: #405247;
+  font-family: var(--font-jetbrains, monospace);
+  font-size: clamp(0.52rem, 1.1vw, 0.83rem);
+  font-weight: 700;
+}
+
+.tile[data-tile="0"][data-visited="true"] {
+  background: #526c56;
+}
+
+.tile[data-tile="1"] { background: #0e1917; }
+.tile[data-tile="2"] { background: #f9cb7e; }
+.tile[data-tile="3"] { background: #c8b5ed; }
+.tile[data-tile="4"] { background: #90d9ab; }
+
+.player {
+  position: absolute;
+  width: 47%;
+  height: 47%;
+  border: 2px solid #eaf2dc;
+  border-radius: 50%;
+  background: #214d3a;
+  box-shadow: 0 0 0 1px #214d3a;
+}
+
+.player[data-blocked="true"] {
+  border-color: #fff0ca;
+  background: #8f482d;
+  box-shadow: 0 0 0 1px #8f482d;
+}
+
+.boardState {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 4px;
+  margin-top: 11px;
+  color: #e6eadf;
+  font-size: 0.76rem;
+}
+
+.blocked { color: #f6bb94; }
+.reached { color: #dceb9d; }
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px 10px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.footer [role="status"] {
+  color: var(--pine);
+  font-weight: 700;
+}
+
+.live :is(button, input):focus-visible {
+  outline: 2px solid #205a46;
+  outline-offset: 2px;
+}
+
+@media (max-width: 560px) {
+  .boards { grid-template-columns: minmax(0, 1fr); }
+  .tile { font-size: 0.75rem; }
+}
