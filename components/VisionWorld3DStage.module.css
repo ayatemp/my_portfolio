@@ -1,0 +1,244 @@
+.stage {
+  --stage-ink: #edf5e9;
+  --stage-muted: #b8ccbe;
+  --stage-border: #344d41;
+  --stage-lime: #c9ed9c;
+  --stage-gold: #ffd7a4;
+  position: relative;
+  min-width: 0;
+  color: var(--stage-ink);
+  border: 1px solid var(--stage-border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #172922;
+  color-scheme: dark;
+}
+
+.toolbar,
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .65rem 1rem;
+  min-width: 0;
+  background: #192d24;
+}
+
+.toolbar {
+  padding: .6rem .7rem;
+  border-bottom: 1px solid var(--stage-border);
+}
+
+.presets,
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.stage button {
+  min-height: 36px;
+  padding: .35rem .7rem;
+  border: 1px solid #476452;
+  border-radius: 6px;
+  background: #20382b;
+  color: #e7f0e5;
+  font-size: .76rem;
+  line-height: 1;
+  font-weight: 650;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.stage button:hover {
+  border-color: #9ac0a3;
+  background: #2c4a36;
+}
+
+.stage button[aria-pressed="true"] {
+  border-color: #8cb26f;
+  background: #cbe6a5;
+  color: #1d3224;
+}
+
+.actions button {
+  display: grid;
+  place-items: center;
+  min-width: 36px;
+  padding-inline: .4rem;
+  font-size: 1.05rem;
+}
+
+.stage button:focus-visible,
+.canvas:focus-visible {
+  outline: 2px solid #e0fcb2;
+  outline-offset: 2px;
+}
+
+.frame {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1px;
+  background: #496652;
+}
+
+.frame[data-mode="compare"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+
+.canvas[data-dragging] { cursor: grabbing; }
+
+.canvas:focus-visible {
+  z-index: 1;
+  outline-offset: -3px;
+}
+
+.pane {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  height: clamp(260px, 34vw, 430px);
+  pointer-events: none;
+}
+
+.frame[data-mode="compare"] .pane + .pane {
+  border-left: 1px solid #5b745a;
+}
+
+.modelLabel,
+.simulatorLabel {
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .48rem;
+  padding: .45rem .55rem;
+  border: 1px solid #648470;
+  border-radius: 6px;
+  background: #12251eea;
+  color: #e8f3e7;
+  font-size: .77rem;
+  line-height: 1;
+  font-weight: 650;
+}
+
+.modelLabel::before,
+.simulatorLabel::before {
+  width: .52rem;
+  height: .52rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--stage-lime);
+  content: "";
+}
+
+.simulatorLabel::before { background: var(--stage-gold); }
+
+.footer {
+  min-height: 43px;
+  padding: .5rem .7rem;
+  border-top: 1px solid var(--stage-border);
+  color: var(--stage-muted);
+  font-size: .7rem;
+  line-height: 1.45;
+}
+
+.footer p { margin: 0; }
+
+.cameraReadout {
+  color: #e2ecda;
+  flex: 0 0 auto;
+  font: 500 .71rem/1.45 var(--font-jetbrains, monospace);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .015em;
+}
+
+.cameraReadout span { opacity: .55; }
+
+.touchHelp { display: none; }
+
+.starting {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 1rem;
+  background: #152822;
+  color: #d6e8d5;
+  font-size: .85rem;
+}
+
+.fallback {
+  min-height: 40px;
+  padding: .65rem;
+}
+
+.fallback > p {
+  margin: 0 0 .5rem;
+  padding-inline: .3rem;
+  color: var(--stage-muted);
+  font-size: .77rem;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  margin: -1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 740px) {
+  .pane { height: clamp(225px, 38vw, 282px); }
+}
+
+@media (max-width: 580px) {
+  .frame[data-mode="compare"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pane { height: clamp(225px, 47vw, 270px); }
+
+  .frame[data-mode="compare"] .pane + .pane {
+    border-top: 1px solid #5b745a;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar,
+  .footer { flex-wrap: wrap; }
+
+  .toolbar { gap: .55rem; }
+  .stage button { min-height: 38px; }
+  .actions button { min-width: 38px; }
+}
+
+@media (pointer: coarse) {
+  .desktopHelp { display: none; }
+  .touchHelp { display: inline; }
+}

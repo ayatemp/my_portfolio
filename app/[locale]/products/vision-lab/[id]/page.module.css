@@ -100,6 +100,10 @@
 .specification dt { color: var(--vision-muted); }
 .specification dd { text-align: right; overflow-wrap: anywhere; }
 
+.paper[data-world-3d] .inner { padding-top: clamp(.9rem, 2vw, 1.5rem); }
+.paper[data-world-3d] .heading { margin: clamp(.9rem, 2.2vw, 1.8rem) 0 clamp(.82rem, 2vw, 1.6rem); }
+.paper[data-world-3d] .heading h1 { margin-block: .42rem .55rem; }
+
 .live { margin-bottom: clamp(1.25rem, 3vw, 2.45rem); }
 
 .archive {
@@ -156,4 +160,5 @@
 @media (max-width: 760px) {
   .heading { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
   .specification { width: max-content; max-width: 100%; min-width: 0; }
+  .paper[data-world-3d] .specification { padding: 0 0 0 .59rem; font-size: .68rem; }
 }

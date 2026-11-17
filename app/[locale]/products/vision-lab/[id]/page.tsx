@@ -5,8 +5,9 @@ import VisionDemoViewer from "@/components/VisionDemoViewer";
 import VisionDetectionLive from "@/components/VisionDetectionLive";
 import VisionExperimentsLive from "@/components/VisionExperimentsLive";
 import VisionWorldLive from "@/components/VisionWorldLive";
+import VisionWorld3D from "@/components/VisionWorld3D";
 import { normalizeLocale } from "@/lib/getDictionary";
-import { getVisionDemos } from "@/lib/visionDemos";
+import { getVisionDemos, getWorld3DVariant } from "@/lib/visionDemos";
 import credits from "@/lib/vision-demo-credits.json";
 import styles from "./page.module.css";
 
@@ -47,10 +48,11 @@ export default async function VisionDemoPage({ params }: PageProps) {
   const usesOwl = demo.model === "OWLv2";
   const isTextDriven = id === "06-text-detection" || id === "10-packing-check";
   const usesBrowserOwl = isTextDriven || id === "09-detection-stress";
+  const threeDimensional = getWorld3DVariant(id);
 
   return (
     <div className={styles.frame}>
-      <div className={styles.paper}>
+      <div className={styles.paper} data-world-3d={threeDimensional ?? undefined}>
         <div className={styles.inner}>
           <nav aria-label={isJa ? "パンくずリスト" : "Breadcrumb"} className={styles.breadcrumb}>
             <Link href={catalog}><span aria-hidden="true">←</span> Products</Link>
@@ -69,11 +71,13 @@ export default async function VisionDemoPage({ params }: PageProps) {
           </header>
 
           <div className={styles.live} key={id}>
-            {demo.group === "world"
-              ? <VisionWorldLive locale={locale} demoId={id} />
-              : isTextDriven
-                ? <VisionDetectionLive locale={locale} demoId={id} />
-                : <VisionExperimentsLive locale={locale} demoId={id} />}
+            {threeDimensional
+              ? <VisionWorld3D locale={locale} demo={threeDimensional} />
+              : demo.group === "world"
+                ? <VisionWorldLive locale={locale} demoId={id} />
+                : isTextDriven
+                  ? <VisionDetectionLive locale={locale} demoId={id} />
+                  : <VisionExperimentsLive locale={locale} demoId={id} />}
           </div>
 
           <details className={styles.archive}>

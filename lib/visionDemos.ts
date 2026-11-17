@@ -35,7 +35,8 @@ const info: Record<string, DemoInfo> = {
     model: "MLP regressor",
     control: ["押し方", "Push"],
     title: "How will the block move?",
-    description: "Predict a block’s path and rotation from an overhead image and a push. Green shows the learned forecast and orange shows the simulator.",
+    description: "Set the direction, strength and contact point of a push. Rotate the 3D view to compare how the block slides, turns and bounces off the wall.",
+    descriptionJa: "押す方向・強さ・当てる位置を変え、ブロックの滑り方や回転、壁での跳ね返りを3Dで比べます。",
     names: ["Push through the center", "Push an edge at an angle", "Push hard near the wall"],
     detail: (entry) => {
       const [rotation, error] = entry.detail.match(/[+-]?[\d.]+/g) ?? [];
@@ -46,8 +47,8 @@ const info: Record<string, DemoInfo> = {
     model: "MLP regressor",
     control: ["自車の行動", "Ego vehicle action"],
     title: "One intersection, three futures",
-    description: "Choose whether to stop, creep forward, or proceed and compare the two cars’ paths side by side in the learned model and the simulator.",
-    descriptionJa: "停止・徐行・進行を選び、2台の車の動きを学習モデルとシミュレータで並べて比べます。",
+    description: "Choose whether to stop, creep forward, or proceed. Orbit the intersection to compare the two cars’ paths at the same instant in the learned model and the simulator.",
+    descriptionJa: "停止・徐行・進行を選び、カメラを回しながら、学習モデルとシミュレータで2台の車がどう動くかを同じ時刻で比べます。",
     names: ["Stop", "Creep forward", "Proceed"],
     detail: (entry) => {
       const [, simulated, forecast, error] = entry.detail.match(/[\d.]+/g) ?? [];
@@ -142,6 +143,12 @@ const info: Record<string, DemoInfo> = {
     },
   },
 };
+
+export function getWorld3DVariant(id: string) {
+  if (id === "01-block-push") return "block";
+  if (id === "02-intersection") return "intersection";
+  return null;
+}
 
 export function getVisionDemos(locale: Locale) {
   const source: Record<string, DemonstrationResult> = results;

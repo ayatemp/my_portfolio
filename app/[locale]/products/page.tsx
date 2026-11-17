@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { normalizeLocale } from "@/lib/getDictionary";
-import { getVisionDemos } from "@/lib/visionDemos";
+import { getVisionDemos, getWorld3DVariant } from "@/lib/visionDemos";
 import FeaturedPreview from "./FeaturedPreview";
 import styles from "./products.module.css";
 
@@ -13,6 +13,7 @@ const copy = {
     worldDescription: "操作と観測から、物体の動きや環境の次の状態を予測します。",
     visionDescription: "物体を見つけ、追跡し、どんな条件で見失うかを確かめます。",
     openDemo: "試す",
+    open3d: "3Dで試す",
     seeDemos: "デモを見る",
     demoList: "デモ一覧",
     selectAction: "自車の行動を選ぶ",
@@ -23,6 +24,7 @@ const copy = {
     worldDescription: "Predict how objects and environments change as actions and observations vary.",
     visionDescription: "Find and track objects, and see which conditions make them harder to detect.",
     openDemo: "Try demo",
+    open3d: "Try in 3D",
     seeDemos: "Explore demos",
     demoList: "Demo index",
     selectAction: "Choose an action for the ego vehicle",
@@ -112,7 +114,7 @@ export default async function ProductsPage({ params }: Params) {
                     <DemoCard
                       demo={demo}
                       href={`${demoPath}/${demo.id}`}
-                      actionLabel={text.openDemo}
+                      actionLabel={getWorld3DVariant(demo.id) ? text.open3d : text.openDemo}
                     />
                   </li>
                 ))}

@@ -102,7 +102,7 @@ export default function FeaturedPreview({
           <Link href={demoHref}>
             <span className={styles.featureStatus} aria-hidden="true" />
             {demoTitle}
-            <span className={styles.featureChevron} aria-hidden="true">↗</span>
+            <span className={styles.featureChevron}>3D <span aria-hidden="true">↗</span></span>
           </Link>
         </figcaption>
         <div className={styles.featureImage}>
